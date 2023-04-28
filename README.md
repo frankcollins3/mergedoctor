@@ -6,4 +6,5 @@ fgets() || scanf() to retrieve the name of the first markdown file.
 ^           ^           ^         ^         ^         ^         ^       
 the above same step gets repeated to gather the data from a second file that is specified by input.
 
-
+UPDATE: The project will now allow for the specification of which file to open. This new development kind of steps over the pun of markdown file MD doctor
+I like the idea of being able to do the same for a .txt file and now that I'm typing this, perhaps even combining C code.
