@@ -19,52 +19,74 @@ int doctor() {
 #include <stdlib.h>
 
 int main() {
-    FILE *fp1, *fp2, *fp3;
+//     FILE *fp1, *fp2, *fp3;
+//     char ch;
+    
+//     fp1 = fopen("patrickbetdavid1.md", "r"); // open first file for reading
+//     if (fp1 == NULL) {
+//         printf("Error: unable to open file patrickbetdavid1.md.\n");
+//         return 1;
+//     }
+    
+//     fp2 = fopen("patrickbetdavid2.md", "r"); // open second file for reading
+//     if (fp2 == NULL) {
+//         printf("Error: unable to open file patrickbetdavid2.md.\n");
+//         return 1;
+//     }
+    
+//     fp3 = fopen("merged_patrickbetdavid.md", "w"); // open new file for writing
+//     if (fp3 == NULL) {
+//         printf("Error: unable to create file merged_patrickbetdavid.md.\n");
+//         return 1;
+//     }
+    
+//     // copy contents of first file to new file
+//     while ((ch = fgetc(fp1)) != EOF) {
+//         fputc(ch, fp3);
+//     }
+    
+//     // copy contents of second file to new file
+//     while ((ch = fgetc(fp2)) != EOF) {
+//         fputc(ch, fp3);
+//     }
+    
+//     // close all files
+//     fclose(fp1);
+//     fclose(fp2);
+//     fclose(fp3);
+    
+//     // delete original files
+//     if (remove("patrickbetdavid1.md") == 0 && remove("patrickbetdavid2.md") == 0) {
+//         printf("Files merged successfully and originals deleted.\n");
+//     } else {
+//         printf("Error: unable to delete original files.\n");
+//     }
+    
+    #include <stdio.h>
+#include <stdlib.h>
+
+    
+    
+//     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+    FILE *fp;
     char ch;
-    
-    fp1 = fopen("patrickbetdavid1.md", "r"); // open first file for reading
-    if (fp1 == NULL) {
-        printf("Error: unable to open file patrickbetdavid1.md.\n");
+   
+    // open file for reading
+    // fp = fopen("/Users/me/Desktop/patrickbetdavid1.md", "r");
+    fp = fopen("food.txt", "r");
+    if (fp == NULL) {
+        printf("Error: unable to open file.\n");
         return 1;
     }
-    
-    fp2 = fopen("patrickbetdavid2.md", "r"); // open second file for reading
-    if (fp2 == NULL) {
-        printf("Error: unable to open file patrickbetdavid2.md.\n");
-        return 1;
+   
+    // read and print contents of file
+    while ((ch = fgetc(fp)) != EOF) {
+        printf("%c", ch);
     }
-    
-    fp3 = fopen("merged_patrickbetdavid.md", "w"); // open new file for writing
-    if (fp3 == NULL) {
-        printf("Error: unable to create file merged_patrickbetdavid.md.\n");
-        return 1;
-    }
-    
-    // copy contents of first file to new file
-    while ((ch = fgetc(fp1)) != EOF) {
-        fputc(ch, fp3);
-    }
-    
-    // copy contents of second file to new file
-    while ((ch = fgetc(fp2)) != EOF) {
-        fputc(ch, fp3);
-    }
-    
-    // close all files
-    fclose(fp1);
-    fclose(fp2);
-    fclose(fp3);
-    
-    // delete original files
-    if (remove("patrickbetdavid1.md") == 0 && remove("patrickbetdavid2.md") == 0) {
-        printf("Files merged successfully and originals deleted.\n");
-    } else {
-        printf("Error: unable to delete original files.\n");
-    }
-    
+   
+    // close file
+    fclose(fp);
+   
     return 0;
 }
-
-
-    return 0;
-}
+//     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
