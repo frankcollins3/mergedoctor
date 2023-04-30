@@ -14,6 +14,12 @@ char* get_file_path(char* user, char* file_name) {
     return file_path;
 }
 
+// char* new_file_path(char* user, char* file_name) {
+//     static char file_path[100];
+//     sprintf(file_path, "/Users/%s/Desktop/%s", user, file_name);
+//     return file_path;
+// }
+
 int main () {
 
     FILE  *fp1, *fp2, *fp3;
@@ -22,6 +28,7 @@ int main () {
     char user[MAX_USER_LENGTH];
     char file1[260] = " ";
     char file2[260] = " ";
+    char file3[260] = " ";
 
     printf("Please enter your username into the input: \n");
     fgets(user, sizeof(user), stdin);
@@ -64,13 +71,17 @@ int main () {
         printf("%c", ch);        
     }
 
-    fp3 = fopen("/Users/medium/Desktop/merged_patrickbetdavid.txt", "w"); // open new file for writing
+printf("We will create a new file with which to merge the data from file 1 & 2. Please write file name and extension .md or .txt");
+    fgets(file3, sizeof(file3), stdin);
+    char* file_path_3 = get_file_path(user, file3);
+
+    fp3 = fopen(file_path_3, "w"); // open new file for writing
+    // fp3 = fopen("/Users/medium/Desktop/merged_patrickbetdavid.md", "w"); // open new file for writing
     if (fp3 == NULL) {
         printf("Error: unable to create file merged_patrickbetdavid.md.\n");
         return 1;
     } else {
-        // remove("/Users/medium/Desktop/patrickbetdavid1.txt");
-        // remove("/Users/medium/Desktop/patrickbetdavid2.txt");
+        
     }
     
     rewind(fp1); // move file pointer back to beginning of fp1
