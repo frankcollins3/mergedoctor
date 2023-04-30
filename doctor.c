@@ -68,12 +68,16 @@ int main() {
     
     
 //     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+    #include <stdio.h>
+#include <stdlib.h>
+
+int main() {
     FILE *fp;
     char ch;
    
     // open file for reading
-    // fp = fopen("/Users/me/Desktop/patrickbetdavid1.md", "r");
-    fp = fopen("food.txt", "r");
+    fp = fopen("../patrickbetdavid1.txt", "r");
+    // fp = fopen("food.txt", "r");
     if (fp == NULL) {
         printf("Error: unable to open file.\n");
         return 1;
