@@ -34,11 +34,11 @@ int main() {
 //         return 1;
 //     }
     
-//     fp3 = fopen("merged_patrickbetdavid.md", "w"); // open new file for writing
-//     if (fp3 == NULL) {
-//         printf("Error: unable to create file merged_patrickbetdavid.md.\n");
-//         return 1;
-//     }
+    fp3 = fopen("merged_patrickbetdavid.md", "w"); // open new file for writing
+    if (fp3 == NULL) {
+        printf("Error: unable to create file merged_patrickbetdavid.md.\n");
+        return 1;
+    }
     
 //     // copy contents of first file to new file
 //     while ((ch = fgetc(fp1)) != EOF) {
