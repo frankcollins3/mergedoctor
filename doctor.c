@@ -76,7 +76,33 @@ int main() {
     char ch;
    
     // open file for reading
-    fp = fopen("../patrickbetdavid1.txt", "r");
+//     fp = fopen("../patrickbetdavid1.txt", "r");
+    #include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    FILE *fp;
+    char ch;
+   
+    // open file for reading
+    // fp = fopen("../patrickbetdavid1.txt", "r");
+    fp = fopen("/Users/medium/Desktop/patrickbetdavid2.txt", "r");
+    // fp = fopen("food.txt", "r");
+    if (fp == NULL) {
+        printf("Error: unable to open file.\n");
+        return 1;
+    }
+   
+    // read and print contents of file
+    while ((ch = fgetc(fp)) != EOF) {
+        printf("%c", ch);
+    }
+   
+    // close file
+    fclose(fp);
+   
+    return 0;
+}
     // fp = fopen("food.txt", "r");
     if (fp == NULL) {
         printf("Error: unable to open file.\n");
