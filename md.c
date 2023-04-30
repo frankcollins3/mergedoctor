@@ -15,7 +15,13 @@ int main () {
 
     char user[MAX_USER_LENGTH];
     char file1[260];
-    char filepath[100] = "/Users/";
+    char file2[260];
+    char filepath_1[100] = "/Users";
+    char filepath_2[100] = "/Users";
+    char userpath[100] = "/Users/";
+    char desktop_path[100];
+    char desktop_path_2[100];
+    char prefilepath[100];
 
     printf("Please enter your username: ");
     fgets(user, sizeof(user), stdin);
@@ -27,13 +33,24 @@ int main () {
     fgets(file1, sizeof(file1), stdin);
     file1[strcspn(file1, "\n")] = '\0';
 
-    strcat(filepath, user);
-    strcat(filepath, "/Desktop/");
-    strcat(filepath, file1);
+    // strcat(prefilepath, filepath);
+    strcat(userpath, user);
+    strcat(userpath, "/Desktop/");
+    printf("userpath:\t %s \n", userpath);
+    // strcat(prefilepath, user);
+    strcat(desktop_path, userpath);
+    strcat(desktop_path_2, userpath);
+    strcat(userpath, file1);
 
-    printf("My file path is: %s\n", filepath);
+    printf("heres my desktop path:\t %s \n", desktop_path);
 
-    fp1 = fopen(filepath, "r");
+    // strcat(filepath, user);
+    // strcat(filepath, "/Desktop/");
+
+    // strcat(filepath, file1);
+    // printf("My file path is: %s\n", filepath);
+
+    fp1 = fopen(userpath, "r");
     if (fp1 == NULL) {
         printf("Error: unable to open file %s.\n", file1);
         return 1;
@@ -43,7 +60,7 @@ int main () {
         printf("%c", ch);        
     }
 
-    
+    fgets(file2, sizeof(file2), stdin);    
     // fp2 = fopen("/Users/medium/Desktop/patrickbetdavid2.txt", "r");
     // if (fp2 == NULL) {
     //     printf("Error: unable to open file patrickbetdavid2.txt.\n");
