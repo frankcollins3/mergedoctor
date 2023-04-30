@@ -67,18 +67,30 @@ int main () {
         return 1;
     }
 
+    printf("\033[2J\033[H"); // ANSI escape codes to clear screen
+
+    while ((ch = fgetc(fp1)) != EOF) {
+        printf("%c", ch);        
+    }
+
     while ((ch = fgetc(fp2)) != EOF) {
         printf("%c", ch);        
     }
 
-printf("We will create a new file with which to merge the data from file 1 & 2. Please write file name and extension .md or .txt");
+    printf("\n");
+
+printf("We will create a new file with which to merge the data from file 1 & 2. Please write file name and extension .md or .txt \n");
     fgets(file3, sizeof(file3), stdin);
     char* file_path_3 = get_file_path(user, file3);
+    file_path_3[strcspn(file_path_3, "\n")] = '\0';
+    printf("file_path_3:\t %s", file_path_3);
+
 
     fp3 = fopen(file_path_3, "w"); // open new file for writing
+
     // fp3 = fopen("/Users/medium/Desktop/merged_patrickbetdavid.md", "w"); // open new file for writing
     if (fp3 == NULL) {
-        printf("Error: unable to create file merged_patrickbetdavid.md.\n");
+        printf("Error: unable to create file merged_patrickbetdavid.md \n");
         return 1;
     } else {
         
