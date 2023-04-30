@@ -8,6 +8,12 @@
 
 #define MAX_USER_LENGTH 20
 
+char* get_file_path(char* user, char* file_name) {
+    static char file_path[100];
+    sprintf(file_path, "/Users/%s/Desktop/%s", user, file_name);
+    return file_path;
+}
+
 int main () {
 
     FILE  *fp1, *fp2, *fp3;
@@ -17,7 +23,7 @@ int main () {
     char file1[260];
     char file2[260];
     char filepath_1[100] = "/Users";
-    char filepath_2[100] = "/Users";
+    char filepath_2[100] = " ";
     char userpath[100] = "/Users/";
     char desktop_path[100];
     char desktop_path_2[100];
@@ -56,20 +62,40 @@ int main () {
         return 1;
     }
 
+    printf("\033[2J\033[H"); // ANSI escape codes to clear screen
+
     while ((ch = fgetc(fp1)) != EOF) {
         printf("%c", ch);        
     }
 
+    printf("\n \n");
+
+    printf("Enter file2 with its file extension into input:\t");
     fgets(file2, sizeof(file2), stdin);    
+    strcat(filepath_2, desktop_path);
+    strcat(filepath_2, file2);
+
+    printf("my filepath2:\t %s", filepath_2);
+    // printf("my filepath2:\t %s", filepath_2);    
+
+
+    // printf("Enter file2 with its file extension into input please: ");
+    // fgets(file2, sizeof(file2), stdin); 
+    // strcat(filepath_2, desktop_path);   
+    // strcat(filepath_2, file2);
+    // printf("my filepath2:\t %s", filepath_2);
+
+    fp2 = fopen(filepath_2, "r");
     // fp2 = fopen("/Users/medium/Desktop/patrickbetdavid2.txt", "r");
-    // if (fp2 == NULL) {
-    //     printf("Error: unable to open file patrickbetdavid2.txt.\n");
-    //     return 1;
-    // }
-    
-    //     while ((ch = fgetc(fp2)) != EOF) {
-    //                 printf("%c", ch);        
-    //     }
+    if (fp2 == NULL) {
+        printf("Error: unable to open file patrickbetdavid2.txt.\n");
+        return 1;
+    }
+
+
+        while ((ch = fgetc(fp2)) != EOF) {
+                    printf("%c", ch);        
+        }
 
     // fp3 = fopen("/Users/medium/Desktop/merged_patrickbetdavid.txt", "w"); // open new file for writing
     // if (fp3 == NULL) {
