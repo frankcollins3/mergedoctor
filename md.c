@@ -6,29 +6,37 @@
 #include <termios.h>
 #include <sys/ioctl.h>
 
-    #define MAX_USER_LENGTH 20
+    #define MAX_USER_LENGTH 20;
 
 int main () {
 
     FILE  *fp1, *fp2, *fp3;
     char ch;
 
-    char user[MAX_USER_LENGTH];
+    char user[20];
+    char file1[260];
+
+    char filepath[100] = "/Users/";
 
     printf("please enter your username: \n");
-    
     fgets(user, sizeof(user), stdin);
     printf("my PC | mac username is: %s \n", user);
-    
-    // fp1 = fopen("/Users/medium/Desktop/patrickbetdavid1.txt", "r");
-    // if (fp1 == NULL) {
-    //     prisntf("Error: unable to open file patrickbetdavid1.txt.\n");
-    //     return 1;
-    // }
 
-    //     while ((ch = fgetc(fp1)) != EOF) {
-    //                 printf("%c", ch);        
-    //     }
+    strcat(filepath, user);
+    strcat(filepath, "/Desktop/patrickbetdavid1.txt");
+    // printf("filepath:\t  \n", filepath);
+    
+    printf("my file path:\t %s \n \n", filepath);
+    fp1 = fopen(filepath, "r");
+    // fp1 = fopen("/Users/medium/Desktop/patrickbetdavid1.txt", "r");
+    if (fp1 == NULL) {
+        printf("Error: unable to open file patrickbetdavid1.txt.\n");
+        return 1;
+    }
+
+        while ((ch = fgetc(fp1)) != EOF) {
+                    printf("%c", ch);        
+        }
     // fp2 = fopen("/Users/medium/Desktop/patrickbetdavid2.txt", "r");
     // if (fp2 == NULL) {
     //     printf("Error: unable to open file patrickbetdavid2.txt.\n");
