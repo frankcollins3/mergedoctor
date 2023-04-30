@@ -59,6 +59,7 @@ int main () {
     fgets(file2, sizeof(file2), stdin);
     char* file_path_2 = get_file_path(user, file2);
     printf("file_path_2:\t %s \n", file_path_2);
+    file_path_2[strcspn(file_path_2, "\n")] = '\0';
 
     fp2 = fopen(file_path_2, "r");
     // fp2 = fopen("/Users/medium/Desktop/patrickbetdavid2.txt", "r");
