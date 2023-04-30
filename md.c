@@ -1,10 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 
+    #define MAX_USER_LENGTH 20
+
 int main () {
 
     FILE  *fp1, *fp2, *fp3;
     char ch;
+
+    char user[MAX_USER_LENGTH];
+    scanf(" %[^\n]s", user);
     
     fp1 = fopen("/Users/medium/Desktop/patrickbetdavid1.txt", "r");
     if (fp1 == NULL) {
