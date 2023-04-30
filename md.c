@@ -55,18 +55,21 @@ int main () {
 
     printf("\n \n");
     
+    printf("enter the 2nd file path with file extension to merge with the data from the above. See the terminal to see the data. \n");
+    fgets(file2, sizeof(file2), stdin);
+    char* file_path_2 = get_file_path(user, file2);
+    printf("file_path_2:\t %s \n", file_path_2);
 
-    // fp2 = fopen(filepath_2, "r");
-    // // fp2 = fopen("/Users/medium/Desktop/patrickbetdavid2.txt", "r");
-    // if (fp2 == NULL) {
-    //     printf("Error: unable to open file patrickbetdavid2.txt.\n");
-    //     return 1;
-    // }
+    fp2 = fopen(file_path_2, "r");
+    // fp2 = fopen("/Users/medium/Desktop/patrickbetdavid2.txt", "r");
+    if (fp2 == NULL) {
+        printf("Error: unable to open file patrickbetdavid2.txt.\n");
+        return 1;
+    }
 
-
-    //     while ((ch = fgetc(fp2)) != EOF) {
-    //                 printf("%c", ch);        
-    //     }
+        while ((ch = fgetc(fp2)) != EOF) {
+                    printf("%c", ch);        
+        }
 
     // fp3 = fopen("/Users/medium/Desktop/merged_patrickbetdavid.txt", "w"); // open new file for writing
     // if (fp3 == NULL) {
