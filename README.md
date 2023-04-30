@@ -19,7 +19,10 @@ I like the idea of being able to do the same for a .txt file and now that I'm ty
 
 
 
-
+To do
+------------------------------------------------------------------------------------------------------------------------
+if a user were to type into the input, a file which was not within scope of their desktop, print the files, show user, goto: redo input []
+------------------------------------------------------------------------------------------------------------------------
 
 // bookmark that a file combiner: interesting and probably not too out of reach project for a: **first android mobile project**
 // utility should be able to combine text from md into text file and choose which lasting file to hold onto.
