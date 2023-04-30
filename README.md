@@ -1,6 +1,7 @@
 # mergedoctor
 
 mergeMD: take for instance 2 alike in name markdown files -> delete data from 1 merge into 1 new .md file
+surgery: open, merge, discharge 
 
 #                                       u s e r             s t o r i e s 
 
@@ -14,8 +15,6 @@ the above same step gets repeated to gather the data from a second file that is 
 I like the idea of being able to do the same for a .txt file and now that I'm typing this, perhaps even combining C code.
 
 * * * This Utility must be able to discern the local machine from being either [ Mac | PC | else ] * * * 
-
-
 
 
 
