@@ -6,37 +6,44 @@
 #include <termios.h>
 #include <sys/ioctl.h>
 
-    #define MAX_USER_LENGTH 20;
+#define MAX_USER_LENGTH 20
 
 int main () {
 
     FILE  *fp1, *fp2, *fp3;
     char ch;
 
-    char user[20];
+    char user[MAX_USER_LENGTH];
     char file1[260];
-
     char filepath[100] = "/Users/";
 
-    printf("please enter your username: \n");
+    printf("Please enter your username: ");
     fgets(user, sizeof(user), stdin);
-    printf("my PC | mac username is: %s \n", user);
+    user[strcspn(user, "\n")] = '\0';
+
+    printf("My PC/Mac username is: %s\n", user);
+
+    printf("Please enter the name of the first file you'd like to open and merge: ");
+    fgets(file1, sizeof(file1), stdin);
+    file1[strcspn(file1, "\n")] = '\0';
 
     strcat(filepath, user);
-    strcat(filepath, "/Desktop/patrickbetdavid1.txt");
-    // printf("filepath:\t  \n", filepath);
-    
-    printf("my file path:\t %s \n \n", filepath);
+    strcat(filepath, "/Desktop/");
+    strcat(filepath, file1);
+
+    printf("My file path is: %s\n", filepath);
+
     fp1 = fopen(filepath, "r");
-    // fp1 = fopen("/Users/medium/Desktop/patrickbetdavid1.txt", "r");
     if (fp1 == NULL) {
-        printf("Error: unable to open file patrickbetdavid1.txt.\n");
+        printf("Error: unable to open file %s.\n", file1);
         return 1;
     }
 
-        while ((ch = fgetc(fp1)) != EOF) {
-                    printf("%c", ch);        
-        }
+    while ((ch = fgetc(fp1)) != EOF) {
+        printf("%c", ch);        
+    }
+
+    
     // fp2 = fopen("/Users/medium/Desktop/patrickbetdavid2.txt", "r");
     // if (fp2 == NULL) {
     //     printf("Error: unable to open file patrickbetdavid2.txt.\n");
