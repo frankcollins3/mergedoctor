@@ -14,12 +14,6 @@ char* get_file_path(char* user, char* file_name) {
     return file_path;
 }
 
-// char* new_file_path(char* user, char* file_name) {
-//     static char file_path[100];
-//     sprintf(file_path, "/Users/%s/Desktop/%s", user, file_name);
-//     return file_path;
-// }
-
 int main () {
 
     FILE  *fp1, *fp2, *fp3;
@@ -83,7 +77,7 @@ printf("We will create a new file with which to merge the data from file 1 & 2. 
     fgets(file3, sizeof(file3), stdin);
     char* file_path_3 = get_file_path(user, file3);
     file_path_3[strcspn(file_path_3, "\n")] = '\0';
-    printf("file_path_3:\t %s", file_path_3);
+    printf("file_path_3:\t %s \n", file_path_3);
 
 
     fp3 = fopen(file_path_3, "w"); // open new file for writing
@@ -110,41 +104,42 @@ printf("We will create a new file with which to merge the data from file 1 & 2. 
     }
 
     if (fp3 != NULL) {
-        char delete;
-        printf("want to delete the original files? \n");
-        printf("enter 1 into the input to delete file_1 \t"); printf("enter 2 into the input to delete file_1 \n"); 
-        scanf("%[^\n]", &delete);
+        char delete_1;
+        char delete_2;
+        // printf("want to delete the original files? \n");
+        // printf("enter 1 into the input to delete file_1 \t"); printf("enter 2 into the input to delete file_1 \n"); 
+        // scanf("%[^\n]", &delete);
+            printf("file1\t %s \n", file1);
+            printf("!!! 2\t %s \n", file2);
+
+
+        printf("press y to delete file number 1 or press any other key to ignore. \n");
             char* file_path_1_again = get_file_path(user, file1);
-            char* file_path_2_again = get_file_path(user, file2);
             file_path_1_again[strcspn(file_path_1_again, "\n")] = '\0';
+            printf("file_path_1:\t %s \n", file_path_1_again);
+            // fgets(&delete_1, sizeof(delete_1), stdin);
+            scanf(" %[^\n]", &delete_1);
+            printf("\n");
+            if (delete_1 == 'y') {
+                remove(file_path_1_again);
+            }
+
+        printf("press y to delete file number 2 or press any other key to ignore. \n");
+            printf("\n");
+            scanf(" %[^\n]", &delete_2);
+            char* file_path_2_again = get_file_path(user, file2);
             file_path_2_again[strcspn(file_path_2_again, "\n")] = '\0';
-            printf("path1:\t %s", file_path_1_again);
-            printf("\n");
-            printf("path2:\t %s", file_path_2_again);
-            printf("\n");
-
-        if (delete == '1') {
-            printf("were in the 1");
-            remove(file_path_1_again);            
-        }
-        if (delete == '2') {
-            printf("were in the 2");
-            remove(file_path_2_again);
-        }
-        if (delete == '3') {
-            printf("were in the 3");            
-            remove(file_path_1_again);
-            remove(file_path_2_again);
-        }        
+            printf(" !!!! 2:\t %s \n", file_path_2_again);
+            // fgets(&delete_2, sizeof(delete_2), stdin);
+            if (delete_2 == 'y') {
+                remove(file_path_2_again);
+            }                
         }
 
-    
-    
-    // close all files
     fclose(fp1);
     fclose(fp2);
     fclose(fp3);
-
+    printf("\n");
     printf("thanks for operating today!");
     
 
