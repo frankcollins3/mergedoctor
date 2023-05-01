@@ -115,23 +115,24 @@ printf("We will create a new file with which to merge the data from file 1 & 2. 
         printf("enter 1 into the input to delete file_1 \t"); printf("enter 2 into the input to delete file_1 \n"); 
         // printf("you can also enter 1 & 2 (in any order) into the input to delete both of the files, only keeping the 1. \n");
         scanf("%[^\n]", &delete);
+            char* file_path_1_again = get_file_path(user, file1);
+            char* file_path_2_again = get_file_path(user, file2);
+            file_path_1_again[strcspn(file_path_1_again, "\n")] = '\0';
+            file_path_2_again[strcspn(file_path_2_again, "\n")] = '\0';
 
         if (delete == '1') {
             printf("were in the 1");
-            char* file_path_1_again = get_file_path(user, file1);
-            file_path_1_again[strcspn(file_path_1_again, "\n")] = '\0';
-            printf("filepath1:\t %s", file_path_1_again);
             remove(file_path_1_again);
             // remove("/Users/medium/Desktop/patrickbetdavid1.txt");
         }
         if (delete == '2') {
             printf("were in the 2");
-            remove(file_path_2);
+            remove(file_path_2_again);
         }
         if (delete == '3') {
-            printf("were in the 3");
-            remove(file_path_1);
-            remove(file_path_2);
+            printf("were in the 3");            
+            remove(file_path_1_again);
+            remove(file_path_2_again);
         }
             // if (strpbrk(delete, 1)) { remove(file_path_1); }     // strpbrk(delete, '1') || (delete, 1) dont work.
             // if (strpbrk(delete, 2)) { remove(file_path_2); }
