@@ -93,19 +93,7 @@ printf("We will create a new file with which to merge the data from file 1 & 2. 
         printf("Error: unable to create file merged_patrickbetdavid.md \n");
         return 1;
     } 
-    else {
-        char delete[2];
-        printf("want to delete the original files? \n");
-        printf("enter 1 into the input to delete file_1 \t"); printf("enter 2 into the input to delete file_1 \n"); 
-        printf("you can also enter 1 & 2 (in any order) into the input to delete both of the files, only keeping the 1. \n");
-        scanf("%[^\n]", delete);
-            if (strpbrk(delete, "1")) { remove(file_path_1); }
-            if (strpbrk(delete, "2")) { remove(file_path_2); }
-            if (strpbrk(delete, "12")) {
-                remove(file_path_1); 
-                remove(file_path_2); 
-            }
-    }
+
     
     rewind(fp1); // move file pointer back to beginning of fp1
     rewind(fp2);
@@ -120,6 +108,40 @@ printf("We will create a new file with which to merge the data from file 1 & 2. 
     while ((ch = fgetc(fp2)) != EOF) {
         fputc(ch, fp3);
     }
+
+    if (fp3 != NULL) {
+        char delete;
+        printf("want to delete the original files? \n");
+        printf("enter 1 into the input to delete file_1 \t"); printf("enter 2 into the input to delete file_1 \n"); 
+        // printf("you can also enter 1 & 2 (in any order) into the input to delete both of the files, only keeping the 1. \n");
+        scanf("%[^\n]", &delete);
+
+        if (delete == '1') {
+            printf("were in the 1");
+            char* file_path_1_again = get_file_path(user, file1);
+            file_path_1_again[strcspn(file_path_1_again, "\n")] = '\0';
+            printf("filepath1:\t %s", file_path_1_again);
+            remove(file_path_1_again);
+            // remove("/Users/medium/Desktop/patrickbetdavid1.txt");
+        }
+        if (delete == '2') {
+            printf("were in the 2");
+            remove(file_path_2);
+        }
+        if (delete == '3') {
+            printf("were in the 3");
+            remove(file_path_1);
+            remove(file_path_2);
+        }
+            // if (strpbrk(delete, 1)) { remove(file_path_1); }     // strpbrk(delete, '1') || (delete, 1) dont work.
+            // if (strpbrk(delete, 2)) { remove(file_path_2); }
+            // if (strpbrk(delete, 12)) {
+            //     remove(file_path_1); 
+            //     remove(file_path_2); 
+            // }        
+        }
+
+    
     
     // close all files
     fclose(fp1);
