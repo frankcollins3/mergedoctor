@@ -90,7 +90,7 @@ printf("We will create a new file with which to merge the data from file 1 & 2. 
 
     // fp3 = fopen("/Users/medium/Desktop/merged_patrickbetdavid.md", "w"); // open new file for writing
     if (fp3 == NULL) {
-        printf("Error: unable to create file merged_patrickbetdavid.md \n");
+        printf("Error: unable to create file:\t %s \n", file_path_3);
         return 1;
     } 
 
@@ -113,17 +113,19 @@ printf("We will create a new file with which to merge the data from file 1 & 2. 
         char delete;
         printf("want to delete the original files? \n");
         printf("enter 1 into the input to delete file_1 \t"); printf("enter 2 into the input to delete file_1 \n"); 
-        // printf("you can also enter 1 & 2 (in any order) into the input to delete both of the files, only keeping the 1. \n");
         scanf("%[^\n]", &delete);
             char* file_path_1_again = get_file_path(user, file1);
             char* file_path_2_again = get_file_path(user, file2);
             file_path_1_again[strcspn(file_path_1_again, "\n")] = '\0';
             file_path_2_again[strcspn(file_path_2_again, "\n")] = '\0';
+            printf("path1:\t %s", file_path_1_again);
+            printf("\n");
+            printf("path2:\t %s", file_path_2_again);
+            printf("\n");
 
         if (delete == '1') {
             printf("were in the 1");
-            remove(file_path_1_again);
-            // remove("/Users/medium/Desktop/patrickbetdavid1.txt");
+            remove(file_path_1_again);            
         }
         if (delete == '2') {
             printf("were in the 2");
@@ -133,13 +135,7 @@ printf("We will create a new file with which to merge the data from file 1 & 2. 
             printf("were in the 3");            
             remove(file_path_1_again);
             remove(file_path_2_again);
-        }
-            // if (strpbrk(delete, 1)) { remove(file_path_1); }     // strpbrk(delete, '1') || (delete, 1) dont work.
-            // if (strpbrk(delete, 2)) { remove(file_path_2); }
-            // if (strpbrk(delete, 12)) {
-            //     remove(file_path_1); 
-            //     remove(file_path_2); 
-            // }        
+        }        
         }
 
     
@@ -148,6 +144,8 @@ printf("We will create a new file with which to merge the data from file 1 & 2. 
     fclose(fp1);
     fclose(fp2);
     fclose(fp3);
+
+    printf("thanks for operating today!");
     
 
 
